@@ -1,69 +1,90 @@
-# React + TypeScript + Vite
+# Example React Application: Zustand Slices & Tabs with Context API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is an example React application built with Vite and TypeScript. Its main purpose is to demonstrate:
 
-Currently, two official plugins are available:
+- The correct usage of [Zustand](https://github.com/pmndrs/zustand) with slices for state management, including an example paginated list with CRUD operations.
+- A reusable Tabs component built using the React Context API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
 
-## Expanding the ESLint configuration
+- [React](https://react.dev/) 18
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Zustand](https://github.com/pmndrs/zustand)
+- [React Router DOM](https://reactrouter.com/)
+- [Tailwind CSS](https://tailwindcss.com/) (for styling)
+- [Axios](https://axios-http.com/) (for HTTP requests, if needed)
+- [ESLint](https://eslint.org/) (with recommended plugins)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Zustand Store with Slices
+- The application uses Zustand to manage state, organized in a slice pattern.
+- Includes an example slice for managing a list of items, with async actions for fetching, adding, updating, and deleting items.
+- The `PaginatedList` component demonstrates how to consume this store, with pagination and CRUD operations.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Tabs Component with Context API
+- The Tabs UI is implemented using a custom `TabContainer`, `TabList`, `Tab`, and `TabPanel` components.
+- State and tab registration are managed via the React Context API, allowing for accessible keyboard navigation and flexible composition.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Example Usage
+- The home page displays a tabbed interface:
+  - The first tab contains the paginated list example (with add, edit, delete, and pagination).
+  - Other tabs show placeholder content.
+
+## Getting Started
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v22 or higher recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+
+### Installation
+
+1. Clone the repository:
+   ```sh
+   git clone <repo-url>
+   cd curotec-test
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+### Running the Project
+
+To start the development server with hot module replacement:
+
+```sh
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The app will be available at [http://localhost:5173](http://localhost:5173) by default.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Building for Production
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+To build the project for production:
+
+```sh
+npm run build
 ```
+
+To preview the production build locally:
+
+```sh
+npm run preview
+```
+
+### Linting
+
+To run ESLint:
+
+```sh
+npm run lint
+```
+
+## Project Structure
+
+- `src/store/itemsStore.ts`: Zustand store with slice for items (example list)
+- `src/components/Tab/`: Tab components using Context API
+- `src/components/PaginatedList.tsx`: Example paginated list using Zustand
+- `src/pages/HomePage.tsx`: Example usage of Tabs and PaginatedList
