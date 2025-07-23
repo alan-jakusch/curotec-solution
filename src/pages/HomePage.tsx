@@ -1,4 +1,4 @@
-import { TabContainer } from '../components';
+import { TabContainer, PaginatedList } from '../components';
 
 export default function HomePage() {
   return (
@@ -13,7 +13,7 @@ export default function HomePage() {
             <TabContainer.Tab index={2}>Tab Three</TabContainer.Tab>
           </TabContainer.TabList>
           <TabContainer.TabPanel index={0}>
-            <div>Content for Tab One</div>
+            <PaginatedList />
           </TabContainer.TabPanel>
           <TabContainer.TabPanel index={1}>
             <div>Content for Tab Two</div>
